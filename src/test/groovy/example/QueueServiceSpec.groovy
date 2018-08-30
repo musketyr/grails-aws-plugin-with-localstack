@@ -2,17 +2,17 @@ package example
 
 import grails.plugin.awssdk.sqs.AmazonSQSService
 import grails.testing.services.ServiceUnitTest
-import org.junit.ClassRule
 import org.testcontainers.containers.localstack.LocalStackContainer
+import org.testcontainers.spock.Testcontainers
 import spock.lang.Shared
 import spock.lang.Specification
 
-import static org.testcontainers.containers.localstack.LocalStackContainer.Service.*
+import static org.testcontainers.containers.localstack.LocalStackContainer.Service.SQS
 
+@Testcontainers
 class QueueServiceSpec extends Specification implements ServiceUnitTest<QueueService> {
 
-    @Shared @ClassRule LocalStackContainer localstack =
-            new LocalStackContainer().withServices(SQS)
+    @Shared LocalStackContainer localstack = new LocalStackContainer().withServices(SQS)
 
     @Override
     Closure doWithConfig() {{ c ->
@@ -37,8 +37,7 @@ class QueueServiceSpec extends Specification implements ServiceUnitTest<QueueSer
     }
 
     private AmazonSQSService prepareAmazonSQSService() {
-        AmazonSQSService amazonSQSService =
-                new AmazonSQSService(grailsApplication: grailsApplication)
+        AmazonSQSService amazonSQSService = new AmazonSQSService(grailsApplication: grailsApplication)
         amazonSQSService.afterPropertiesSet()
         return amazonSQSService
     }

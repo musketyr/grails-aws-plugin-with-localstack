@@ -63,6 +63,8 @@ dependencies {
 
     // custom
     compile 'org.grails.plugins:aws-sdk-sqs:2.2.4'
+
+    testCompile group: 'org.testcontainers', name: 'spock', version: '1.8.3'
     testCompile group: 'org.testcontainers', name: 'localstack', version: '1.8.3'
 
 }
