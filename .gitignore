@@ -1,0 +1,23 @@
+# Gradle
+build/
+.gradle/
+
+# IDEs
+
+*.c9
+*.iml
+*.ipr
+*.iws
+*.vscode
+.idea/
+.asscache
+MANIFEST.MF
+out
+
+# System Files
+.DS_Store
+Thumbs.db
+$RECYCLE.BIN/
+
+# SonarQube
+**/.scannerwork
